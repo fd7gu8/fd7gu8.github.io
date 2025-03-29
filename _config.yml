@@ -1,20 +1,20 @@
-title: fd7gu8 - 제작 중 # name of the site
+title: 조형욱 Cho Hyung-wook # name of the site
 author: fd7gu8 # name of site's author
-email: riccardo.graziosi97@gmail.com # email of site's author
+email: x6k53e8zr@mozmail.com # email of site's author
 url: https://fd7gu8.github.io # root address of the site
 baseurl: "" # subpath of the site, e.g. "/blog" (leave it blank "" if you're site shouldn't use a subpath)
 description: > # description of the site (multiple lines allowed)
-  일상의 궤적에 대한 데이터 기반의 해석
+  공간과 이동에 대한 데이터 기반의 해석 
 
 permalink: /:slug.html
 
 favicon: "logo.png" # name+extension of favicon (which must be put on the root folder)
-# goat_counter: "yoursitename" # put your GoatCounter name if you want to use GoatCounter analytics
+goat_counter: "fd7gu8" # put your GoatCounter name if you want to use GoatCounter analytics
 
 remote_theme: riggraz/no-style-please # if you are using GitHub Pages, change it to remote_theme: riggraz/no-style-please
 
 theme_config:
-  appearance: "light" # can be "light", "dark" or "auto"
+  appearance: "light" # "light", "dark" or "auto"
   back_home_text: "home" # customize text for homepage link in post layout
   date_format: "%Y-%m-%d" # customize how date is formatted
   show_description: true # show blog description in home page
@@ -26,7 +26,7 @@ sass:
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
-  - jektex
+  # - jektex
 
 jektex:
   cache_dir: ".jektex-cache"
@@ -35,3 +35,12 @@ jektex:
   macros:
     - ["\\Q", "\\mathbb{Q}"]
     - ["\\C", "\\mathbb{C}"]
+    
+# 2025-03-29에 추가한 코드 강조 설정
+# 파이썬 코드 등에 문법 강조 색상을 적용하기 위한 설정입니다.
+markdown: kramdown
+highlighter: rouge
+
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
