@@ -36,11 +36,3 @@ jektex:
     - ["\\Q", "\\mathbb{Q}"]
     - ["\\C", "\\mathbb{C}"]
     
-# 2025-03-29에 추가한 코드 강조 설정
-# 파이썬 코드 등에 문법 강조 색상을 적용하기 위한 설정입니다.
-markdown: kramdown
-highlighter: rouge
-
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge

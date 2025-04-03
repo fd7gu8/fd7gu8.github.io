@@ -5,12 +5,12 @@ title: About
 
 ## 조형욱 Cho Hyung-wook
 - 데이터 분석, 데이터 과학, 공간 데이터 분석
-- 도시 데이터 분석 및 이동성 중심의 도시 현상 탐구
+- 도시 데이터 분석과 이동성 중심의 도시 현상 탐구
 
 ### Contact
 Email: <a href="mailto:x6k53e8zr@mozmail.com">x6k53e8zr@mozmail.com</a> 
 
-- 위 주소는 수신 전용 메일 주소이며, 스팸 방지를 위해 정기적으로 변경됩니다. 연락주시면 제 일반 메일 주소로 회신해 드립니다.
+\- 위 연락처는 정기적으로 변경되는 수신 전용 메일 주소입니다. 연락주시면 제 일반 메일 주소로 회신해 드립니다.
 
 ### Publications
 - **조형욱**, 김다솜, 이삼수. 2022. 코로나19 전후 대구광역시 도시공간의 유동인구 분포 변화 - 핫스팟 분석을 중심으로. 국토계획, 57(2), 5-17. <a href="http://www.kpaj.or.kr/_PR/view/?aidx=33033&bidx=2939">http://www.kpaj.or.kr/_PR/view/?aidx=33033&bidx=2939</a>
