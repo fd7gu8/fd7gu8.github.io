@@ -10,22 +10,14 @@ entries:
       show_more_text: 전체 글 보기...
       show_more_url: archive.html
 
-  - title: analytics - 분석 (추가 예정)
-    post_list:
-      limit: 3
-      category: analytics
-      show_more: true
-      show_more_text: 더 보기...
-      show_more_url: analytics-archive.html
-
-  - title: anecdotes - 생각 (추가 예정)
-    post_list:
-        limit: 3
-        category: anecdotes
-        show_more: true
-        show_more_text: 더 보기...
-        show_more_url: anecdotes-archive.html
-  
+  - title: article collections - 주제별 모음
+    entries:
+      - title: analytics - 분석
+        url: analytics-archive.html
+      
+      - title: anecdotes - 생각
+        url: anecdotes-archive.html
+        
   - title: about - 소개
     url: about
 
