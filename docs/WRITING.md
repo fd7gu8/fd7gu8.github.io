@@ -1,4 +1,6 @@
-# Astro 로컬 블로그
+# 로컬 실행과 글 작성
+
+아래 경로와 명령은 저장소 루트를 기준으로 한다. 사이트 개요와 라이선스 구분은 [README](../README.md)를 참고한다.
 
 ## 실행
 
@@ -84,15 +86,12 @@ src/assets/blog/accuracy-vs-speed/h3-grid.webp
 
 라이선스 원문은 `/fonts/suit/LICENSE`로 배포된다. 블로그 화면에 별도 출처 문구를 추가하지 않는다.
 
-## 현재 범위
+## 배포
 
-GitHub Pages는 `.github/workflows/deploy.yml`을 통해 Astro의 `dist/`를 배포한다. 기존 Jekyll 파일은 빌드에 사용하지 않는다. Markdown의 `published: true`는 다음 Astro 빌드에 포함한다는 의미이며, `master`에 push하고 배포가 성공하면 인터넷에 발행된다. 로컬 파일 수정만으로는 발행되지 않는다.
+GitHub Pages는 `.github/workflows/deploy.yml`을 통해 Astro의 `dist/`를 배포한다. Markdown의 `published: true`는 다음 Astro 빌드에 포함한다는 의미이며, `master`에 push하고 배포가 성공하면 인터넷에 발행된다. 로컬 파일 수정만으로는 발행되지 않는다.
 
-2026-10-10 검증 결과:
+배포 전에는 `pnpm build`와 `pnpm preview`로 공개 여부, 링크, 이미지, 모바일 화면과 라이트·다크 모드를 확인한다. GitHub Actions의 build와 deploy가 모두 성공한 뒤 실제 블로그에서 결과를 확인한다.
 
-- 타입 검사: 오류·경고·힌트 없음.
-- 프로덕션 빌드: HTML 8개와 RSS 생성, 기존 공개 글 3개 포함.
-- 임시 글로 `published: false` 및 옵션 생략 시 HTML·목록·RSS 제외 확인. 검증용 글과 이미지는 제거함.
-- 로컬 초안 표시, 이미지 로드, 라이트·다크 코드 강조, 테마 순환과 새로고침 후 유지 확인.
-- 320·375·768·1440 CSS px에서 검증용 본문의 페이지 가로 넘침 없음. 코드와 표는 내부 스크롤.
-- Lighthouse 점수 측정, JavaScript 비활성화 환경 및 시스템 테마 변경의 실기기 검증은 별도 확인 항목으로 남음.
+## 독립 HTML 페이지를 추가할 때
+
+추후 독립적인 시각화가 필요하면 `public/labs/이름/index.html`과 같은 위치에 HTML·JavaScript·데이터 파일을 넣을 수 있다. 주소는 `/labs/이름/`이 되며 Astro는 이 파일들을 가공하지 않고 배포한다. `public/`에 넣은 파일은 `published` 설정과 관계없이 공개되므로 비밀 키나 비공개 데이터는 넣지 않는다.
