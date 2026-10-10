@@ -1,0 +1,22 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from '../lib/posts';
+interface Props { post: CollectionEntry<'blog'> }
+const { post } = Astro.props;
+const { title, description, date, type, published, updatedAt } = post.data;
+---
+<BaseLayout title={title} description={description} active={type} article date={date} updatedAt={updatedAt} noindex={!published}>
+  <article>
+    <header class="post-header">
+      <h1>{title}</h1>
+      <p class="post-meta">
+        <time datetime={formatDate(date)}>{formatDate(date)}</time>
+        {updatedAt && <span> · 수정 <time datetime={formatDate(updatedAt)}>{formatDate(updatedAt)}</time></span>}
+        {!published && <span class="draft">Draft</span>}
+      </p>
+    </header>
+    <div class="prose"><slot /></div>
+    <p class="back-link"><a href={type === 'article' ? '/articles/' : '/notes/'}>← {type === 'article' ? 'Articles' : 'Notes'}</a></p>
+  </article>
+</BaseLayout>

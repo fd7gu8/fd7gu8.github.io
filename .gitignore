@@ -3,7 +3,13 @@
 *.css.map
 .bundle
 .jekyll-cache
+.jektex-cache/
 .sass-cache
 _site
 vendor
-Gemfile.lock
+
+# Astro local development
+node_modules/
+dist/
+.astro/
+!src/styles/*.css

@@ -1,125 +1,92 @@
-# no style, please!
+# 조형욱 Cho Hyung-wook
 
-[![Gem Version](https://badge.fury.io/rb/no-style-please.svg)](https://badge.fury.io/rb/no-style-please)
+Articles · Notes · About으로 구성한 개인 블로그입니다. 글을 읽고 쓰는 데 집중할 수 있도록 Astro의 정적 HTML, Markdown, 작은 규모의 CSS와 JavaScript를 사용합니다.
 
-<img src="https://raw.githubusercontent.com/riggraz/no-style-please/master/logo.png" width="64" align="left" />A (nearly) no-CSS, fast, minimalist [Jekyll](https://jekyllrb.com/) theme.
-Inspired by [elly's site](http://tilde.town/~elly/), expressly created for [my personal blog](https://riggraz.dev/).
+GitHub Pages에 Astro 정적 빌드 결과를 배포합니다. 공개 주소는 https://fd7gu8.github.io/ 입니다.
 
-<h3 align="center"><a href="https://riggraz.dev/no-style-please/">Try the demo out!</a></h3>
+## 로컬 실행
 
-<img src="https://raw.githubusercontent.com/riggraz/no-style-please/master/_screenshots/featured-image.png" />
+Node.js 24와 pnpm 11이 필요합니다.
 
-## Features
-
-* Fast (**1kb of CSS!** For more information on performance and more, see [Page Speed Insights report](https://raw.githubusercontent.com/riggraz/no-style-please/master/_screenshots/page-speed-insights-report.png) and [Lighthouse report](https://raw.githubusercontent.com/riggraz/no-style-please/master/_screenshots/lighthouse-report.png))
-* Light, dark and auto modes
-* Responsive
-* Content first (typography optimized for maximum readability)
-* SEO optimized (uses [Jekyll SEO Tag](https://github.com/jekyll/jekyll-seo-tag))
-* RSS feed (uses [Jekyll Feed](https://github.com/jekyll/jekyll-feed))
-* Fully compatible with [GitHub Pages](https://pages.github.com/) (see [GitHub Pages installation](#github-pages-installation))
-
-## Installation
-
-If you haven't already created your blog using Jekyll, follow the [instructions](https://jekyllrb.com/docs/) to do so from Jekyll's documentation.
-
-NOTE: if you are using Jekyll with GitHub Pages, see the [GitHub Pages installation section](#github-pages-installation).
-
-Then, to style your blog with this theme, add this line to your Jekyll site's `Gemfile`:
-
-```ruby
-gem "no-style-please"
+```powershell
+pnpm install --frozen-lockfile
+pnpm dev
 ```
 
-And add this line to your Jekyll site's `_config.yml`:
+기본 주소는 [http://127.0.0.1:4321/](http://127.0.0.1:4321/)입니다. 포트가 사용 중이면 터미널에 표시된 주소를 따릅니다.
 
-```yaml
-theme: no-style-please
-```
+| 명령 | 용도 |
+| --- | --- |
+| `pnpm dev` | 초안을 포함한 개발 서버 |
+| `pnpm check` | 타입 및 Astro 파일 검사 |
+| `pnpm build` | 검사 후 공개 글만 정적 빌드 |
+| `pnpm preview` | `dist/`의 배포 결과 미리보기 |
 
-And then execute:
+## 글 작성
 
-    $ bundle
+`src/content/blog/`에 Markdown 파일을 만듭니다. 예를 들어 `accuracy-vs-speed.md`의 주소는 `/blog/accuracy-vs-speed/`입니다.
 
-Or install it yourself as:
-
-    $ gem install no-style-please
-
-### GitHub Pages installation
-
-If you want to use this theme for your Jekyll's site deployed on [GitHub Pages](https://pages.github.com/), follow the instructions on [this page](https://docs.github.com/en/github/working-with-github-pages/adding-a-theme-to-your-github-pages-site-using-jekyll#adding-a-theme).
-
-## Usage
-
-You can edit `_config.yml` file to customize your blog. You can change things such as the name of the blog, the author, the appearance of the theme (light, dark or auto), how dates are formatted, etc. Customizable fields should be straightforward to understand. Still, `_config.yml` contains some comments to help you understand what each field does.
-
-For further customization (e.g. layout, CSS) see the [official Jekyll's documentation](https://jekyllrb.com/docs/themes/#overriding-theme-defaults) on customizing gem-based themes.
-
-### Customize the menu
-
-In order to add/edit/delete entries from the main menu, you have to edit the `menu.yml` file inside `_data` folder. Through that file you can define the structure of the menu. Take a look at the default configuration to get an idea of how it works and read on for a more comprehensive explanation.
-
-The `menu.yml` file accepts the following fields:
-
-- `entries` define a new unordered list that will contain menu entries
-- each entry is marked by a `-` at the beginning of the line
-- each entry can have the following attributes:
-    - `title`, which defines the text to render for this menu entry (**NB: you can also specify HTML!**)
-    - `url`, which can be used to specify an URL for this entry. If not specified, `title` will be rendered as-is; otherwise `title` will be sorrounded by a link tag pointing to the specified URL. Note that the URL can either be relative or absolute. Also note that you can get the same result by placing an ```<a>``` tag in the `title` field.
-    - `post_list`, which can be set either to `true` or to an object. If it is true, the entry will have a list of all posts as subentries. This is used to render your post list. If you want to customize which posts to render (e.g. by category), you can add one or more of the following attributes under `post_list`:
-        - `category`, which can be set to a string. It is used to render a list of posts of the specified category only. If you don't set it, then posts of all categories will be rendered.
-        - `limit`, which can be set to a number. It specifies the number of posts to show. If not set, all posts will be rendered.
-        - `show_more`, which can be true. If it is true and if the number of posts to show is greater than the specified `limit`, render a link to another page. To specify the URL and the text of the link, you can set `show_more_url` and `show_more_text` attributes, which are documented below.
-        - `show_more_url`, which can be a string. It specifies the URL for the show more link. Use only if `show_more` is true. This will usually redirect to a page containing all posts, which you can easily create using an archive page (see [create archive pages](#create-archive-pages) section)
-        - `show_more_text`, which can be a string. It specifies the text for the show more link. Use only if `show_more` is true.
-    - `entries`, yes, you can have entries inside entries. In this way you can create nested sublists!
-
-### Create archive pages
-
-A so-called archive page is a page that shows a list of posts (see [this](https://riggraz.dev/no-style-please/all-posts) for an example). You can create an archive page by creating a page and putting the following frontmatter:
-
-```
+```markdown
 ---
-layout: archive
-title: The title of the page here
-which_category: name-of-category
+title: "글 제목"
+date: 2026-10-10
+type: article
+published: false
 ---
+
+여기에 글을 작성합니다.
 ```
 
-`which_category` is optional: if you don't put it, then all posts of the blog will be listed; on the other hand, if you specify a category, only posts of that category will be shown.
+- `type: article`: 분석, 연구, 프로젝트처럼 완결된 글.
+- `type: note`: 의견, 관찰, 짧은 기록.
+- `published: false`: 로컬 개발 화면에서만 Draft로 표시. 생략해도 기본값은 `false`.
+- `published: true`: 프로덕션의 글 페이지·목록·RSS에 포함.
+- `description`, `updatedAt`: 선택 항목.
 
-This feature is particularly useful if used together with the `show_more` attribute in the menu. For example, if you want to limit the number of posts shown in the home page to 5 but add a link to view them all, then you can create an archive page using the method showed above and link to it using the `show_more_url` attribute in `menu.yml`. See [this example](https://github.com/riggraz/no-style-please/blob/master/_data/menu.yml) if you're in doubt.
+글 전용 이미지는 `src/assets/blog/{글 파일명}/`에 넣고 Markdown의 상대경로로 연결합니다. 자세한 예시는 [로컬 개발 및 작성 안내](LOCAL_DEVELOPMENT.md)를 참고하세요.
 
-### Customize the index page
+`published`는 발행 여부를 결정하는 옵션입니다. 공개 저장소의 원문과 Git 기록을 숨기지 않으며, 참조한 이미지가 빌드 자산에 포함될 수도 있습니다. 민감한 자료를 저장하는 용도로 사용하지 않습니다.
 
-The `index.md` page should use layout `home`, which is the layout that displays the menu. If you want to have some content after the menu, you can just add that content in the `index.md` file, and it will automatically show under the menu.
+## 구성과 동작
 
-Another thing you can do to customize the index page is show the description of your blog between the title and the menu. To do this, just edit `_config.yml` and change `theme_config.show_description` to `true`.
+- **Articles · Notes · About**: 홈에는 유형별 최근 글 5개를 날짜와 제목으로 표시합니다.
+- **테마**: 라이트·다크 아이콘을 항상 함께 표시합니다. 첫 방문에는 시스템 설정을 따르고, 직접 선택하면 브라우저에 저장합니다.
+- **본문**: 반응형 단일 컬럼, 코드 구문 강조, 표와 코드 영역의 가로 스크롤을 제공합니다.
+- **폰트**: 공식 SUIT Variable 원본을 자체 호스팅합니다. 폰트용 외부 CDN 요청은 없습니다.
+- **RSS**: `/rss.xml`에 공개된 Articles와 Notes를 함께 제공합니다.
+- **방문 통계**: GoatCounter는 프로덕션 빌드의 실제 블로그 도메인에서만 로드합니다. 로컬 개발·미리보기에서는 로드하지 않습니다.
 
-### Pro tips
+## 주요 파일
 
-#### Dark mode for images
+| 위치 | 역할 |
+| --- | --- |
+| `src/content/blog/` | Articles와 Notes 원문 |
+| `src/content/about.md` | About 본문 |
+| `src/content.config.ts` | 글 메타데이터 검증 |
+| `src/lib/posts.ts` | 공개 여부 필터와 정렬 |
+| `src/pages/` | 홈, 목록, 글, RSS 등의 경로 |
+| `src/components/`, `src/layouts/` | 공통 화면 구성 |
+| `src/styles/global.css` | 폰트, 색상, 여백, 반응형 스타일 |
+| `src/site.ts` | 사이트 정보와 연락처 |
+| `public/fonts/suit/` | SUIT 파일, 라이선스, 출처 |
+| `astro.config.mjs` | 사이트 주소와 Astro 설정 |
 
-This theme provides dark mode by inverting all colors of light mode throught the CSS `invert()` function. This approach would also invert the color of all images, but, since this is not the behaviour one would expect, images are not inverted by default.
+## 배포 전환 상태
 
-However, if you would like to force the color inversion on a specific image you can do so by applying `class="ioda"` to that image ("ioda" stands for "invert on dark appearance"). See the image in the [overview post](https://github.com/riggraz/no-style-please/blob/master/_posts/2020-07-07-overview-post.md) for an example of this approach. Note that color inversion will take place only when the theme has dark appearance!
+기존 `_posts/`, `_layouts/`, `_includes/`, `_sass/`, Ruby 관련 파일은 정리 전까지 보존하지만 빌드·배포에 사용하지 않습니다. Astro는 `src/content/`의 글만 읽습니다. 두 원문 폴더는 자동으로 동기화되지 않습니다.
 
-For example, if you have a black and white image it could make sense to invert it in dark mode. On the other hand, a colorful image will probably look bad if inverted.
+`master` 브랜치에 push하면 `.github/workflows/deploy.yml`이 Node.js 24와 pnpm으로 의존성을 설치하고 `pnpm build`를 실행합니다. 검증 성공 후 `dist/`만 GitHub Pages에 배포합니다. Pages의 Source는 GitHub Actions로 설정합니다. 로컬에서 `pnpm build`를 실행하는 것만으로 사이트가 배포되지는 않습니다.
 
-## Contributing
+## 문서와 라이선스
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/riggraz/no-style-please. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+- [실행·글 작성 상세 안내](LOCAL_DEVELOPMENT.md)
+- [설계 및 전환 계획](ASTRO_MIGRATION_PLAN.md)
+- [사이트 코드의 MIT 라이선스](LICENSE.txt)
+- [글·사진·그림의 이용 조건](CONTENT_LICENSE.md)
+- [외부 구성 요소와 원본 고지](THIRD_PARTY_NOTICES.md)
+- [기존 Jekyll 테마 문서 보관본](docs/legacy/NO_STYLE_PLEASE_README.md)
 
-## Development
+사이트 구현 코드와 개발 문서는 MIT 라이선스로 제공합니다. 게시글·About 본문·사진·그림·도표 및 별도 표기가 없는 글 속 예제 코드는 MIT 대상에서 제외하며, 법령상 허용되는 이용 등을 제외한 재사용에는 별도 허락이 필요합니다. 콘텐츠의 원문·첨부 자산뿐 아니라 생성된 HTML과 RSS 속 콘텐츠에도 같은 구분을 적용합니다.
 
-To set up your environment to develop this theme, run `bundle install`.
-
-Your theme is setup just like a normal Jekyll site! To test your theme, run `bundle exec jekyll serve` and open your browser at `http://localhost:4000`. This starts a Jekyll server using your theme. Add pages, documents, data, etc. like normal to test your theme's contents. As you make modifications to your theme and to your content, your site will regenerate and you should see the changes in the browser after a refresh, just like normal.
-
-When your theme is released, only the files in `_layouts`, `_includes`, `_sass` and `assets` tracked with Git will be bundled.
-To add a custom directory to your theme-gem, please edit the regexp in `no-style-please.gemspec` accordingly.
-
-## License
-
-The theme is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+기존 Jekyll 테마의 원본 MIT 고지는 보존합니다. SUIT 폰트는 SIL OFL 1.1을 따릅니다. 다른 제3자 자료와 패키지에도 각각의 이용 조건이 적용됩니다. 과거에 유효하게 부여된 라이선스나 허락은 이번 문서 정리로 철회되지 않습니다.
 

@@ -1,0 +1,10 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PostList from '../../components/PostList.astro';
+import { getPosts } from '../../lib/posts';
+const posts = (await getPosts()).filter((post) => post.data.type === 'note');
+---
+<BaseLayout title="Notes" active="note">
+  <h1 class="page-title">Notes</h1>
+  <PostList posts={posts} />
+</BaseLayout>

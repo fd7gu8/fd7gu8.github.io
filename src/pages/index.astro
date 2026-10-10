@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PostList from '../components/PostList.astro';
+import { getPosts } from '../lib/posts';
+const posts = await getPosts();
+---
+<BaseLayout>
+  <h1 class="sr-only">글 목록</h1>
+  {[{ type: 'article', title: 'Articles', href: '/articles/' }, { type: 'note', title: 'Notes', href: '/notes/' }].map((section) => (
+    <section class="home-section" aria-labelledby={section.type}>
+      <h2 id={section.type}><a href={section.href}>{section.title}</a></h2>
+      <PostList posts={posts.filter((post) => post.data.type === section.type).slice(0, 5)} />
+      {posts.filter((post) => post.data.type === section.type).length > 5 && <a class="more-link" href={section.href}>전체 글 →</a>}
+    </section>
+  ))}
+</BaseLayout>

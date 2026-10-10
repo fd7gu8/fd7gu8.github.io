@@ -1,0 +1,15 @@
+---
+import ThemeControl from './ThemeControl.astro';
+const { active } = Astro.props;
+---
+<header class="site-header">
+  <a class="site-name" href="/">조형욱 <span lang="en">Cho Hyung-wook</span></a>
+  <div class="navigation-row">
+    <nav aria-label="주 메뉴">
+      <a href="/articles/" aria-current={active === 'article' ? 'page' : undefined}>Articles</a>
+      <a href="/notes/" aria-current={active === 'note' ? 'page' : undefined}>Notes</a>
+      <a href="/about/" aria-current={active === 'about' ? 'page' : undefined}>About</a>
+    </nav>
+    <ThemeControl />
+  </div>
+</header>

@@ -1,0 +1,8 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content } from '../content/about.md';
+---
+<BaseLayout title="About" active="about">
+  <h1 class="page-title">About</h1>
+  <div class="prose about-prose"><Content /></div>
+</BaseLayout>

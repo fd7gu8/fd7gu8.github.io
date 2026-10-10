@@ -1,0 +1,16 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { formatDate, postUrl } from '../lib/posts';
+interface Props { posts: CollectionEntry<'blog'>[] }
+const { posts } = Astro.props;
+---
+{posts.length ? (
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <time datetime={formatDate(post.data.date)}>{formatDate(post.data.date)}</time>
+        <div><a href={postUrl(post.id)}>{post.data.title}</a>{!post.data.published && <span class="draft">Draft</span>}</div>
+      </li>
+    ))}
+  </ul>
+) : <p class="muted">아직 등록된 글이 없습니다.</p>}
