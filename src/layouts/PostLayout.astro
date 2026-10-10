@@ -6,7 +6,7 @@ interface Props { post: CollectionEntry<'blog'> }
 const { post } = Astro.props;
 const { title, description, date, type, published, updatedAt } = post.data;
 ---
-<BaseLayout title={title} description={description} active={type} article date={date} updatedAt={updatedAt} noindex={!published}>
+<BaseLayout title={title} description={description} active={type} article date={date} updatedAt={updatedAt} noindex={!published} math={post.data.math}>
   <article>
     <header class="post-header">
       <h1>{title}</h1>

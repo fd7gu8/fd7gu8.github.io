@@ -22,6 +22,8 @@
 
 ## 패키지와 외부 서비스
 
+KaTeX는 수식을 빌드 시 렌더링하며 CSS와 수식 글꼴을 자체 호스팅합니다. 원본은 https://github.com/KaTeX/KaTeX 이며 MIT 라이선스를 따릅니다. Copyright (c) 2013-2020 Khan Academy and other contributors. 라이선스 전문은 [public/licenses/katex.txt](public/licenses/katex.txt)에 보존하며 배포 결과에도 포함합니다. 설치 버전은 `pnpm-lock.yaml`에 고정됩니다.
+
 Astro, RSS·타입 검사 도구와 그 의존성은 각 패키지에 포함된 라이선스를 따릅니다. 정확한 설치 버전은 `pnpm-lock.yaml`에 기록됩니다. 이 문서는 전체 전이 의존성의 라이선스 목록을 대신하지 않습니다.
 
 사이트는 실제 배포 도메인에서 GoatCounter 스크립트를 요청합니다. 폰트는 자체 호스팅하며 Google Fonts나 KaTeX CDN은 사용하지 않습니다. 외부 서비스의 코드·서비스 조건은 사이트의 MIT 라이선스로 변경되지 않습니다.

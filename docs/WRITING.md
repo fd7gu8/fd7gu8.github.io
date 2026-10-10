@@ -66,6 +66,32 @@ src/assets/blog/accuracy-vs-speed/h3-grid.webp
 
 코드는 Markdown 코드 펜스에 `python`, `javascript`, `sql` 같은 언어 이름을 지정하면 구문 강조가 적용된다. 긴 코드는 코드 영역 안에서 가로로 스크롤된다. 이미지는 본문 폭에 맞춰 표시된다.
 
+## 수식
+
+로컬 표시 샘플은 `pnpm dev` 실행 후 `/blog/style-sample/`에서 확인한다. `src/content/blog/style-sample.md`에 수식·코드·표·이미지·각주 예시가 있다. `published: false`를 유지하여 실제 배포에는 포함하지 않는다.
+
+수식을 사용하는 글은 frontmatter에 `math: true`를 추가한다. 생략하거나 `math: false`이면 수식 CSS를 불러오지 않는다. Articles와 Notes 모두 동일하다.
+
+```markdown
+---
+title: "교통량과 통행시간"
+date: 2026-10-10
+type: article
+published: false
+math: true
+---
+
+교통량 $x$와 통행시간 $t(x)$의 관계입니다.
+
+$$
+t(x) = a + bx
+$$
+```
+
+본문 안에서는 `$...$`, 독립된 수식은 위처럼 `$$`를 별도 줄에 놓는다. 수식은 KaTeX가 빌드 시 HTML과 MathML로 변환하며, 브라우저에서 수식을 처리하는 JavaScript나 외부 CDN은 사용하지 않는다. CSS와 수식 전용 글꼴은 빌드 자산으로 자체 호스팅하고 해당 글에서만 CSS를 연결한다. 본문 SUIT는 그대로 유지한다. 긴 독립 수식은 영역 안에서 가로 스크롤된다.
+
+수식을 작성했으면 반드시 `math: true`를 지정한다. 달러 기호 자체는 `\$`로 이스케이프하거나 인라인 코드로 표시한다. KaTeX가 지원하는 LaTeX 문법을 사용하며, 새 수식은 로컬 화면에서 표시 오류가 없는지 확인한다.
+
 ## 수정 위치
 
 - 글: `src/content/blog/`

@@ -1,0 +1,10 @@
+/* KaTeX CSS and fonts are bundled locally. License: /licenses/katex.txt */
+@import 'katex/dist/katex.min.css';
+
+.prose .katex { font-size: 1.1em; overflow-wrap: normal; }
+.prose .katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-block: .25em;
+}
